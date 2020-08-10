@@ -1,6 +1,7 @@
 import os
 from flask_sqlalchemy import SQLAlchemy
 from flask import Flask
+from sqlalchemy import text
 
 
 app = Flask(__name__)
@@ -17,7 +18,7 @@ def hello():
 
 @app.route('/test')
 def test():
-    sql = SQLAlchemy.text("select * from `user`")
+    sql = text("select * from `user`")
     result = db.engine.execute(sql)
     for row in result:
         print(row)
